@@ -1,0 +1,338 @@
+ADDING THE FILE TO THE REMOTE REPOSITORY USING GIT BASH.
+
+GIT BASH COMMANDS:
+
+01:
+$ git init
+
+02:
+$ ls -a  (Getting the list of all hidden files.)
+
+03:
+$ touch <File name.txt> (Creating the file.)
+
+04:
+$ git status  (Checking the folder/file status.)
+
+05:
+$ git add <File name.txt>  (Adding the file to stagging area.)
+
+06:
+$ git config --global user.name "your GitHub username"
+
+07:
+$ git config --global user.email "your email id"
+
+08:
+$ git commit -m "Commit message" (For commiting with defined message.)
+
+09:
+$ git log  (For checking Logs/Activities.)
+
+10:
+$ git add .  ('.' for indicating current file.)
+
+11:
+$ git reset --hard <hash value of the version form git log>  (For getting back to previous version.)
+
+12:
+$ git clone <url>  (For cloning the GitHub repository)
+
+13:
+$ git push origin main
+
+
+
+
+-- The below are the steps to add a file/folder to a remote GitHub repository --
+
+1. Create a folder on your Desktop.
+2. Open the Command Prompt (CMD) in that particular folder path.
+3. >> git init   (Initialization of empty git repository)
+4. Create a <filename.extension> (i.e. demo.txt) in that folder (add some content of your choice).
+5. Save the file.
+6. >> git add .
+7. >> git commit -m "Done"
+8. >> git config --global user.name "GitHub profile name"
+9. >> git config --global user.email "email ID"
+10. >> git push
+11. >> git remote add <filename.extension> <GitHub repository URL>
+12. >> git push <filename.extension>
+13. >> git push --set-upstream <filename.extension> master
+-- Some basic commands are used for creating and deleting the branches --
+
+1. >> git branch  (lists the existing branches on the git repository.)
+2. >> git checkout -b <branch name>  (used for the creation of a new branch and switching to it.)
+3. >> git branch <branch name>   (creating a new branch.)
+4. >> git checkout  (switching between the branches.)
+5. >> git branch -m <new branch name>  (for renaming the existing branch.)
+    NOTE: For the above command you should be on the same branch that you want to rename, use " git checkout" for switching,
+6. >> ls   (lists all the files and folders in the existing repository.)
+7. >> cat <filename.extension>  (for reading the contents of the file.)
+
+
+
+
+
+1. Download Python, Jdk 17.0.8 & Jenkins.
+2. Go to the search bar and search for Edit System Variables.
+3. In Edit System Variable click "Edit environment" ->  Under system variables select "PATH".
+4. Edit the "PATH" -> Click on "New" -> Enter the path of JDK 17.0.8 till 'Bin' then press OK.
+5. Now install Jenkins -> PATH (JDK 17.0.8) -> Run as administrator.
+6. In the browser search for "localhost:8080".
+7. Copy the highlighted link -> go to the path in this PC -> Now open the notepad -> Copy the password.
+8. Paste the password in the browser.
+9. Set the username and password of your choice -> Save and continue -> Save and continue.
+10. Open an empty GitHub repository with a READ.ME file in it and upload a sample file to it.
+11. In Jenkins select New Item -> Free Style project -> Give any name of your choice -> OK.
+12. In Source Code Management -> select Git -> Enter the GitHub URL -> In branches to build select the exact branch which you are in (i.e. /*main).
+13. In Build Triggers -> select Poll SCM? -> Schedule? -> Enter  * * * * * .
+14. In Build Steps -> Add build step -> Select Execute window batch command -> Enter the command (i.e. for java "java Filename.java").
+15. Apply -> Save.
+16. Now click on "Build Now" -> In build history click on the file -> "Select Console Output".
+17. Finally the OUTPUT will be displayed.
+
+
+
+
+
+
+STEPS:
+
+1. Download and install the Docker desktop version.
+2. Search "Turn windows feature on or off". 
+3. Enable the following: 
+            a. Hyper-V
+            b. Windows Subsystem for Linux
+4. Set the Environment variables.
+5. Open a new folder on the desktop and add the files as and when required.
+>> docker search <name of the image>  -> Lists out all the features available.
+    docker search msql
+>> docker pull <name of the image>  -> To pull the image.
+>> docker run <name of the image>
+>> docker run -e MYSQL_ROOT_PASSWORD="root123" -d msql
+      -e -> environment variables.
+      -d -> image is running in background.
+FROM python
+WORKDIR /app
+COPY . /app
+CMD ["python","sample.py"]
+1. To create an image:
+    docker build -t <name of the image> <path of the application>
+    docker build -t pythonbuild .
+
+2. To run the image:
+    docker run --name <name of the running image> <image name>
+    docker run --name program4 pythonbuild
+
+
+
+
+1. >> Docker search mysql --> Name of the image
+2. >> Docker run mysql --> To run the image
+3. >> Docker run -e MYSQL_ROOT_PASSWORD = "root123" -d mysql
+            <environment> <user defined password> <detach>
+mysql image contains pre installed client and server model
+4. Open a new TAB in cmd
+5. >> Docker run -it mysql /bin/bash --> interactive bash shell in container --> for mysql client
+
+6. Open a new TAB in cmd
+7. >> Docker container ls
+8. >> Docker inspect awesome-babbage 
+                    <name of the container>
+The name is provided in the last column
+9. IP address of the server --> 172.17.0.2
+goto client: bash-4.4#
+10. >> mysql -h 172.17.0.2 -u root -p
+            <username> <password>
+After entering it will ask for the password
+11. >> Enter password: root123
+12. Finally it will goto mysql
+   >> mysql > show databases;
+                                    +---------------------------+
+                                    |          Database         |
+                                    +---------------------------+
+                                    | Information_Schema        |
+                                    |  MySQL                    |
+                                    |  Performance_Schema       |
+                                    |  Sys                      |
+                                    +---------------------------+
+ 13. Next copy the container ID form container lists and write the below command.
+            >> Docker stop <container ID>
+
+
+
+
+
+Configuration Steps:
+1. Go to Jenkins and configure docker plug-ins.
+Install
+1. CloudBees Docker Custom Build EnvironmentVersion1.7.3
+2. Docker
+3. Docker Compose Build Step
+Make sure that these three plug-in must be installed.
+2. Create a pipeline project
+3. Go to project configuration add pipeline script under “Advanced project Options”
+
+pipeline
+{
+agent any
+environment
+{
+ dockerImage=''
+ registry='randomplayer2002/pythonapp'
+ registryCredential='jenkin_docker_token'
+}
+stages{
+ stage('Checkout')
+ {
+ steps{
+ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:
+'https://github.com/AnilBiluvala/dpipeline.git']])
+ }
+ }
+ stage('Build Docker image')
+ {
+VVCE, MYSORE
+22 [20CS77-DEVOPS LAB]
+ steps{
+ script{
+ dockerImage=docker.build registry
+ }
+ }
+ }
+
+ }
+}
+
+In script add git url, docker hub credentias, docker hub image name.
+Save the configuration and run the build. Image will be created.
+4. Push the image to docker hub.
+    >> docker login
+Provide docker hub crdentials.
+
+5. Tag the image to be pushed.
+docker tag <reponame>:<tagname> <hubname>/<display name>
+
+6. Push the image to hub.
+7. Image will be available in docker hub
+
+
+
+
+
+
+1. file > others > maven proj > next > next > filter: maven-acretype-quickestart verison 1.1 to 1.4
+   > next > grpid archid anything > finish
+
+2. Right click on created id folder > new > folder > name as JSON > finesh
+
+3. Right click on JSON > New > file > name as student.json
+
+{ "firstname":"hihi", "lastname":"haha"}
+
+
+4. Right click on Soucrce/test/java > new > class > name the java class > finish
+
+5. Paste this code 
+
+package ReadJson.ReadJson;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+
+public class ReadJSON {
+
+	public static void main(String args[]) throws IOException, ParseException {
+
+		JSONParser jsonparser = new JSONParser();
+		FileReader reader = new FileReader(".\\json\\student.json");
+		Object obj = jsonparser.parse(reader);
+		JSONObject studentobj = (JSONObject)obj;
+		String fname = (String)studentobj.get("firstname");
+		String lname = (String)studentobj.get("lastname");
+		System.out.println("firstname"+fname);
+		System.out.println("lastname"+lname);
+
+	}
+
+}
+
+6. Copy this maven code and paste it in Pom.xml > replace the contents in between <Dependencies> </Dependencies> 
+
+<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
+
+
+
+
+
+
+
+1. Create account on slack.com
+2. Create a channel in slack
+3. Open Jinkins
+4. Manage Jenkins > plugins > available plugins > slack notification plugins (install) 
+5. Come to dashboard > manage Jenkins > system > scroll down to “Slack”
+6. Open https://plugins.jenkins.io/slack/ in new tab
+7. Click on the 2nd link in step 2.
+8. Select the channel you had created
+9. Click on Add Jenkins CI integration
+10. In step 3, Copy the team sub domain and the Integration token credential ID
+11. Go to Jenkins page, in Slack section, paste the  team sub domain in workspace.
+12. In credentials, click on add > select KIND as secret text > paste the copied Integration token credential ID under Secret.
+13. Give desired id > click on ADD
+14. Under Default channel, type the channel name which you had created.
+15. Click on Save
+16. Go back to Dashboadd > New item > enter a name >select free style project > OK
+17. Scroll down to Build steps > Execute windows batch command > type “java -version”
+18. In post build actions > select slack notification > check “Notify success”, “Notify unstable”, “Notify failure” > SAVE.
+19. Click on Build now.
+20. Go to slack channel and check for success message.
+
+
+
+
+
+
+download selenium for java
+download latest chrome 
+download the latest chrome drivers :https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/win64/chrome-win64.zip
+
+ecxtract both
+
+create a new java project in eclipse>class and paste the code
+add the jar files by right clicking on the created java project
+buildpath>config build path>libraries>add external jar files
+select all the jar files extracted from the  selenium for java download 
+
+change the path of the drivers in code
+code(eclipse):
+
+package Selenium;
+import java.time.Duration;
+public class Launchchrome {
+
+  public static void main(String[] args) throws InterruptedException {
+      // TODO Auto-generated method stub
+      
+      System.setProperty ("webdriver.chrome.driver","c:\\Users\\VVCE\\Downloads\\chromedrivers-win64\\chromedrivers-win64\\chromedrivers.exe");
+      ChromeDriver driver = new ChromeDriver():
+      driver.manage () .window() .maximize();
+      driver.get("http://www.vvce.ac.in/"):
+      driver.manage().timeouts() .implicitlyWait (10, TimeUnit. SECONDS);
+      driver.findElement (By.xpath("//span[text ()="x"] [1]")).click();
+  }
+}
+
+
