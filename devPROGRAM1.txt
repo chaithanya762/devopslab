@@ -1,0 +1,154 @@
+student@MB MINGW64 ~/Desktop/ammu
+$ git init
+Initialized empty Git repository in C:/Users/student/Desktop/ammu/.git/
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ ls -a
+./  ../  .git/
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ touch hello.txt
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git add hello.txt
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git config --global user.name "chaithanya762"
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git config --global user.email "20cse0192@vvce.ac.in"
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=chaithanya762
+user.email=20cse0192@vvce.ac.in
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git log
+fatal: your current branch 'master' does not have any commits yet
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git commit -m "this is a new file"
+[master (root-commit) 8f15f30] this is a new file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hello.txt
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git log
+commit 8f15f3048c0cdcd13e21fc3832b8effb1c9359f7 (HEAD -> master)
+Author: chaithanya762 <20cse0192@vvce.ac.in>
+Date:   Mon Nov 20 15:31:40 2023 +0530
+
+    this is a new file
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git add .
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git commit -m "new line"
+[master 9b00648] new line
+ 1 file changed, 1 insertion(+)
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git log
+commit 9b0064864af79d8b7ab41695bf3d606378ba1352 (HEAD -> master)
+Author: chaithanya762 <20cse0192@vvce.ac.in>
+Date:   Mon Nov 20 15:32:38 2023 +0530
+
+    new line
+
+commit 8f15f3048c0cdcd13e21fc3832b8effb1c9359f7
+Author: chaithanya762 <20cse0192@vvce.ac.in>
+Date:   Mon Nov 20 15:31:40 2023 +0530
+
+    this is a new file
+
+
+CREATE A EMPTY REPO ON GITHUB AND ClONE IT INTO YOUR SYSTEM!!!!!
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git clone https://github.com/chaithanya762/program1
+Cloning into 'program1'...
+warning: You appear to have cloned an empty repository.
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git remote add origin https://github.com/chaithanya762/program1.git
+
+AFTER PUSHING THE REMOTE FILE IN SYSTEM WILL BE AVAILABLE IN GITHUB!!!!!!!
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$  git push --set-upstream origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (6/6), 438 bytes | 438.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/chaithanya762/program1.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git reset
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git reset hello.txt
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git reset --hard 8f15f3048c0cdcd13e21fc3832b8effb1c9359f7
+HEAD is now at 8f15f30 this is a new file
+
+IN COMMITS , THE HEAD WAS AT NEW LINE COMMIT NOW TO SHIFT THE HEAD AND ERASE PREVIOUS COMMIT COPY THE HASH KEY!!!!!!!
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$ git log
+commit 8f15f3048c0cdcd13e21fc3832b8effb1c9359f7 (HEAD -> master)
+Author: chaithanya762 <20cse0192@vvce.ac.in>
+Date:   Mon Nov 20 15:31:40 2023 +0530
+
+    this is a new file
+
+student@MB MINGW64 ~/Desktop/ammu (master)
+$

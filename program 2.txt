@@ -1,0 +1,381 @@
+
+student@dbms18 MINGW64 ~/Desktop/Folder
+$ git config --global user.email "20cse0192@vvce.ac.in"
+
+student@dbms18 MINGW64 ~/Desktop/Folder
+$ git config --global user.name "chaithanya762"
+
+student@dbms18 MINGW64 ~/Desktop/Folder
+$ git init
+Initialized empty Git repository in C:/Users/student/Desktop/Folder/.git/
+
+student@dbms18 MINGW64 ~/Desktop/Folder (master)
+$ git branch
+
+student@dbms18 MINGW64 ~/Desktop/Folder (master)
+$ git checkout -b feature1
+Switched to a new branch 'feature1'
+
+student@dbms18 MINGW64 ~/Desktop/Folder (feature1)
+$ git branch
+
+student@dbms18 MINGW64 ~/Desktop/Folder (feature1)
+$ git clone https://github.com/chaithanya762/Demo
+Cloning into 'Demo'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (6/6), done.
+
+student@dbms18 MINGW64 ~/Desktop/Folder (feature1)
+$ git branch
+
+student@dbms18 MINGW64 ~/Desktop/Folder (feature1)
+$ ls
+Demo/
+
+student@dbms18 MINGW64 ~/Desktop/Folder (feature1)
+$ cd Demo/
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git branch
+* main
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git checkout -b feature2
+Switched to a new branch 'feature2'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature2)
+$ git branch
+* feature2
+  main
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature2)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git checkout feature2
+Switched to branch 'feature2'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature2)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature2)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature2)
+$ git checkout -b feature1
+Switched to a new branch 'feature1'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature1)
+$ git branch
+* feature1
+  feature2
+  main
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (feature1)
+$ git branch -m f2
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git branch -d feature2
+Deleted branch feature2 (was d898ff6).
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git branch
+* f2
+  main
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git add .
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git commit -m "added data to main branch"
+[main d9a90b6] added data to main branch
+ 1 file changed, 1 insertion(+)
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git checkout f2
+Switched to branch 'f2'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git diff main
+diff --git a/first.py b/first.py
+index 58f2d21..7e01f39 100644
+--- a/first.py
++++ b/first.py
+@@ -1,4 +1,3 @@
+ print("added first line")
+ print("added second line")
+ print("added third line")
+-print("added fourth line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git merge main
+Updating d898ff6..d9a90b6
+Fast-forward
+ first.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git checkout f2
+Already on 'f2'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git status
+On branch f2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git add .
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git commit -m "added to f2 branch"
+[f2 70867c9] added to f2 branch
+ 1 file changed, 1 insertion(+)
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git add .
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git commit -m "added to main branch"
+[main 4e4d128] added to main branch
+ 1 file changed, 1 insertion(+)
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git diff main
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git diff f2
+diff --git a/first.py b/first.py
+index 6ad2890..f2f13ab 100644
+--- a/first.py
++++ b/first.py
+@@ -2,4 +2,4 @@ print("added first line")
+ print("added second line")
+ print("added third line")
+ print("added fourth line")
+-print("added fifth line")
++print("main- added 6th line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git merge main
+Already up to date.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+print("main- added 6th line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (main)
+$ git checkout f2
+Switched to branch 'f2'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git status
+On branch f2
+nothing to commit, working tree clean
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+print("added fifth line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git merge main
+Auto-merging first.py
+CONFLICT (content): Merge conflict in first.py
+Automatic merge failed; fix conflicts and then commit the result.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2|MERGING)
+$ git merge main
+Already up to date.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git pull origin main
+From https://github.com/chaithanya762/Demo
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ ls
+README.md  first.py
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ cat first.py
+print("added first line")
+print("added second line")
+print("added third line")
+print("added fourth line")
+print("added fifth line")
+print("main- added 6th line")
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f2)
+$ git checkout -b f1
+Switched to a new branch 'f1'
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ git status
+On branch f1
+nothing to commit, working tree clean
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ git add .
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ fit commit -m "on new branch"
+bash: fit: command not found
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ git commit -m "f1 branch"
+On branch f1
+nothing to commit, working tree clean
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ git status
+On branch f1
+nothing to commit, working tree clean
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$ git push origin f1
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 1.07 KiB | 219.00 KiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), done.
+remote:
+remote: Create a pull request for 'f1' on GitHub by visiting:
+remote:      https://github.com/chaithanya762/Demo/pull/new/f1
+remote:
+To https://github.com/chaithanya762/Demo
+ * [new branch]      f1 -> f1
+
+student@dbms18 MINGW64 ~/Desktop/Folder/Demo (f1)
+$
