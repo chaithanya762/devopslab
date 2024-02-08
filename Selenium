@@ -1,0 +1,36 @@
+
+-> browser -> selenium download -> click on java -> save -> extract
+-> select browser -> chrome -> documentation
+-> older releases -> downloads -> red link
+-> chromedriver win64 -> copy and paste the link in new tab -> save -> extract
+
+open eclipse
+
+-> File -> new -> other -> Maven -> Maven Project -> next -> next -> maven-archetype-quickstart (select org) -> name for id's (selenium)
+-> selenium -> right click -> build path -> configure build path -> lib -> module path -> add external jars -> selenium (select all except lib) -> open ->apply and close
+-> again right click -> build path -> configure build path -> modulepath -> lib -> select all -> open -> apply and close
+-> selenium -> src -> right click -> new -> class -> Launchchrome -> finish
+-> copy paste the code
+
+
+package selenium.selenium;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Chromelauncher {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+      System.setProperty("webdriver.chrome.driver","C:\\Users\\wwwpr\\Downloads\\chromedriver-win64\\chromedriver.exe");
+      ChromeDriver driver = new ChromeDriver();
+      driver.manage().window().maximize();
+      driver.get("http://www.vvce.ac.in/");
+      //Thread.sleep(100);
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      driver.findElement(By.xpath("//span[text()='×'][1]")).click();
+      //System.out.println(driver.getTitle());
+	}
+}
